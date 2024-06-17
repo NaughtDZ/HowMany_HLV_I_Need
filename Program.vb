@@ -9,34 +9,34 @@ Module Program
     End Sub
 
     Public Sub caculate()
-        ' ¶¨ÒåÑÕÉ«AºÍÑÕÉ«B£¨RGB¸ñÊ½£©
-        Console.WriteLine("ÇëÊäÈë±»¸Ä±äÑÕÉ«£¬ÒÀ´ÎR\G\B£¬ÊäÈëÒ»¸öÊı×Ö»Ø³µÒ»´Î")
-        Dim colorA As Color = Color.FromArgb(Console.ReadLine(), Console.ReadLine(), Console.ReadLine()) ' ÀıÈç£¬ºìÉ«
-        Console.WriteLine("ÇëÊäÈëÄ¿±êÑÕÉ«£¬ÒÀ´ÎR\G\B£¬ÊäÈëÒ»¸öÊı×Ö»Ø³µÒ»´Î")
-        Dim colorB As Color = Color.FromArgb(Console.ReadLine(), Console.ReadLine(), Console.ReadLine()) ' ÀıÈç£¬ÂÌÉ«
+        ' å®šä¹‰é¢œè‰²Aå’Œé¢œè‰²Bï¼ˆRGBæ ¼å¼ï¼‰
+        Console.WriteLine("è¯·è¾“å…¥è¢«æ”¹å˜é¢œè‰²ï¼Œä¾æ¬¡R\G\Bï¼Œè¾“å…¥ä¸€ä¸ªæ•°å­—å›è½¦ä¸€æ¬¡")
+        Dim colorA As Color = Color.FromArgb(Console.ReadLine(), Console.ReadLine(), Console.ReadLine()) 
+        Console.WriteLine("è¯·è¾“å…¥ç›®æ ‡é¢œè‰²ï¼Œä¾æ¬¡R\G\Bï¼Œè¾“å…¥ä¸€ä¸ªæ•°å­—å›è½¦ä¸€æ¬¡")
+        Dim colorB As Color = Color.FromArgb(Console.ReadLine(), Console.ReadLine(), Console.ReadLine())
 
-        ' ½«RGBÑÕÉ«×ª»»ÎªHSLÑÕÉ«
+        ' å°†RGBé¢œè‰²è½¬æ¢ä¸ºHSLé¢œè‰²
         Dim hslA As HSL = RGBToHSL(colorA)
         Dim hslB As HSL = RGBToHSL(colorB)
 
-        ' ¼ÆËãHSL±ä»¯Á¿
+        ' è®¡ç®—HSLå˜åŒ–é‡
         Dim hueDiff As Double = hslA.H - hslB.H
         Dim satDiff As Double = hslA.S - hslB.S
         Dim lightDiff As Double = hslA.L - hslB.L
 
-        ' Êä³öHSL±ä»¯Öµ
-        Console.WriteLine("HSL±ä»¯Öµ: ({0}, {1}, {2})", hueDiff, satDiff, lightDiff)
-        Console.WriteLine("×¢Òâ£¬Õâ¸öÊÇHSLµÄ±ä»¯Öµ£¡Èç¹ûÄãµÄHSL¸Ä±ä²Ù×÷ÖĞ0.5,1ÊÇ²»¸ÄÑÕÉ«£¬ÄÇÃ´¾ÍÔÚ´Ë»ù´¡ÉÏ¼Ó¼õ¼´¿É£¡")
+        ' è¾“å‡ºHSLå˜åŒ–å€¼
+        Console.WriteLine("HSLå˜åŒ–å€¼: ({0}, {1}, {2})", hueDiff, satDiff, lightDiff)
+        Console.WriteLine("æ³¨æ„ï¼Œè¿™ä¸ªæ˜¯HSLçš„å˜åŒ–å€¼ï¼å¦‚æœä½ çš„HSLæ”¹å˜æ“ä½œä¸­0.5,1æ˜¯ä¸æ”¹é¢œè‰²ï¼Œé‚£ä¹ˆå°±åœ¨æ­¤åŸºç¡€ä¸ŠåŠ å‡å³å¯ï¼")
     End Sub
 
-    ' ¶¨ÒåHSL½á¹¹Ìå
+    ' å®šä¹‰HSLç»“æ„ä½“
     Public Structure HSL
         Public H As Double
         Public S As Double
         Public L As Double
     End Structure
 
-    ' ½«RGB×ª»»ÎªHSL
+    ' å°†RGBè½¬æ¢ä¸ºHSL
     Public Function RGBToHSL(ByVal color As Color) As HSL
         Dim r As Double = color.R / 255.0
         Dim g As Double = color.G / 255.0
@@ -71,7 +71,7 @@ Module Program
             End If
         End If
 
-        ' ½«HÖµ×ª»»Îª0-1·¶Î§
+        ' å°†Hå€¼è½¬æ¢ä¸º0-1èŒƒå›´
         h /= 360.0
 
         Return New HSL With {.H = h, .S = s, .L = l}
